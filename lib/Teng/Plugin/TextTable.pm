@@ -21,15 +21,15 @@ sub draw_text_table {
     $iter->suppress_object_creation(1);
     my @rows = $iter->all;
 
-    my @headers = map { [length $_, $_] } @$cols;
+    my @headers = map { [length($_) || 1, $_] } @$cols;
     for my $i (0..@$cols-1) {
         for my $row (@rows) {
-            $headers[$i]->[0] = List::Util::max($headers[$i]->[0], length($row->{$cols->[$i]}));
+            $headers[$i]->[0] = List::Util::max($headers[$i]->[0], length($row->{$cols->[$i]}) || 1);
         }
     }
     my $tt = Text::SimpleTable->new(@headers);
     for my $row (@rows) {
-        $tt->row(map { $row->{$_} } @$cols);
+        $tt->row(map { $row->{$_} || '' } @$cols);
     }
     return $tt->draw;
 }
