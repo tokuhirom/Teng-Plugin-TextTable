@@ -2,7 +2,7 @@ package Teng::Plugin::TextTable;
 use strict;
 use warnings;
 use 5.010001;
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 use Text::SimpleTable;
 use Carp ();
 use List::Util ();
