@@ -29,5 +29,10 @@ my $build = Module::Build->new(
    
     create_readme  => 1,
     create_license => 1,
+    meta_merge => {
+        resources => {
+            repository => 'https://github.com/tokuhirom/Teng-Plugin-TextTable'
+        }
+    },
 );
 $build->create_build_script();
